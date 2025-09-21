@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.2-beta1]
+Ruby 3.4 compatibility release for testing.
+
+### Features
+- Ruby 3.4 support and compatibility
+- Updated CI to test against Ruby 3.0-3.4
+
+### Bug fixes
+- Fix Ruby 3.4.6 Reline interceptor compatibility
+- Fix Ruby 3.4.6 compatibility in path classifier
+
 ## [0.3.1]
 This release fixes bunch of bugs, and performance issues reported by the users after beta launch. No new features are introduced.
 
