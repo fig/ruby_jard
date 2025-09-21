@@ -104,9 +104,22 @@ module RubyJard
 
     def interceptable?
       return false unless defined?(PTY)
-      return false if defined?(Reline) && Readline == Reline
-      return false if RubyJard::Reflection.instance.call_method(::Readline, :input=).source_location != nil
-      return false if RubyJard::Reflection.instance.call_method(::Readline, :output=).source_location != nil
+
+      # In Ruby 3.4+, Reline is the default Readline implementation and should work fine
+      if RUBY_VERSION >= '3.4.0'
+        # Allow forwardable delegation in Ruby 3.4+ (methods will have source_location in forwardable.rb)
+        input_location = RubyJard::Reflection.instance.call_method(::Readline, :input=).source_location
+        output_location = RubyJard::Reflection.instance.call_method(::Readline, :output=).source_location
+
+        # Only reject if patched by non-standard sources (not forwardable.rb)
+        return false if input_location && !input_location[0].include?('forwardable.rb')
+        return false if output_location && !output_location[0].include?('forwardable.rb')
+      else
+        # Original logic for older Ruby versions
+        return false if defined?(Reline) && Readline == Reline
+        return false if RubyJard::Reflection.instance.call_method(::Readline, :input=).source_location != nil
+        return false if RubyJard::Reflection.instance.call_method(::Readline, :output=).source_location != nil
+      end
 
       true
     end

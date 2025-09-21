@@ -45,6 +45,7 @@ class JardIntegrationTest
       '-c', @dir,
       '-t', @target,
       '-n', 'main',
+      '-e', 'RUBYOPT=-W0',
       @command
     )
     sleep 0.5
