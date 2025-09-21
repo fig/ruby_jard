@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'bigdecimal', '~> 3.2', '>= 3.2.3'
   spec.add_runtime_dependency 'byebug', '>= 9.1', '< 12.0'
+  spec.add_runtime_dependency 'mutex_m', '~> 0.3.0'
   spec.add_runtime_dependency 'pry', '~> 0.14.0'
   spec.add_runtime_dependency 'tty-screen', '~> 0.8.1'
 end
