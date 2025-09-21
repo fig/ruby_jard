@@ -28,7 +28,7 @@ RSpec.describe RubyJard::PathClassifier do
   end
 
   context 'when input path is in current dir which is also gem path' do
-    let(:dir) { Gem.path.first }
+    let(:dir) { Gem.path.find { |path| Dir.exist?(path) } }
 
     it 'returns source tree' do
       Dir.chdir(dir) do
