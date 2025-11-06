@@ -9,7 +9,7 @@ if Gem.path.all? { |path| Dir[File.join(path, 'gems/jard_merge_sort*')].empty? }
   puts `gem install ./spec/examples/jard_merge_sort/jard_merge_sort-0.1.0.gem`
 end
 
-gem 'byebug', '~> 11.1.0'
+gem 'byebug', '~> 12.0'
 gem 'jard_merge_sort', require: false
 gem 'rake', '~> 12.0'
 gem 'rspec', '~> 3.0'

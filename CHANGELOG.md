@@ -1,4 +1,9 @@
 # Changelog
+## [0.3.2-beta2]
+Ruby 3.5 compatibility release.
+- Add gem `benchmark` to gemspec
+- Add gem `ostruct` to gemspec
+- Update dependency `byebug`
 
 ## [0.3.2-beta1]
 Ruby 3.4 compatibility release for testing.

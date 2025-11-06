@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
                         editors.'
   spec.homepage      = 'https://github.com/nguyenquangminh0711/ruby_jard'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0', '< 3.5.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0', '< 3.6.0')
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
@@ -32,9 +32,11 @@ Gem::Specification.new do |spec|
   spec.executables   = []
   spec.require_paths = ['lib']
 
+  spec.add_runtime_dependency 'benchmark', '~> 0.5.0'
   spec.add_runtime_dependency 'bigdecimal', '~> 3.2', '>= 3.2.3'
-  spec.add_runtime_dependency 'byebug', '>= 9.1', '< 12.0'
+  spec.add_runtime_dependency 'byebug', '~> 12.0'
   spec.add_runtime_dependency 'mutex_m', '~> 0.3.0'
+  spec.add_runtime_dependency 'ostruct', '~> 0.6.3'
   spec.add_runtime_dependency 'pry', '~> 0.14.0'
   spec.add_runtime_dependency 'tty-screen', '~> 0.8.1'
 end
