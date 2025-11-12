@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'uri'
+require 'unicode_normalize/normalize'
 
 RSpec.describe RubyJard::PathClassifier do
   subject(:classifier) { described_class.new }
@@ -99,8 +99,8 @@ RSpec.describe RubyJard::PathClassifier do
 
   context 'when input path is a standard lib sub folder' do
     it 'returns stdlib, and relative path' do
-      expect(classifier.classify(URI::HTTP.method(:build).source_location.first)).to eq(
-        [:stdlib, 'uri', 'uri/http.rb']
+      expect(classifier.classify(UnicodeNormalize.method(:normalize).source_location.first)).to eq(
+        [:stdlib, 'unicode_normalize', 'unicode_normalize/normalize.rb']
       )
     end
   end
