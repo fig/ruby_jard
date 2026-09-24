@@ -38,7 +38,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: [3.2, 3.3, 3.4, 4.0, head]
+        ruby: ['3.2', '3.3', '3.4', '4.0', head]
+    # ruby-head is an early warning, not a gate. byebug 12's C extension
+    # does not build on it yet (Ruby 4.1 development).
+    continue-on-error: ${{ matrix.ruby == 'head' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -73,7 +76,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: [3.2, 3.3, 3.4, 4.0, head]
+        ruby: ['3.2', '3.3', '3.4', '4.0', head]
+    # ruby-head is an early warning, not a gate. byebug 12's C extension
+    # does not build on it yet (Ruby 4.1 development).
+    continue-on-error: ${{ matrix.ruby == 'head' }}
     env:
       CI_PLATFORM: "macos"
     runs-on: macos-latest
