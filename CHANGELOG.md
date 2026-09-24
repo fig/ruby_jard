@@ -6,6 +6,7 @@ Ruby 4.0 compatibility.
 - Fix backtrace method labels repeating the class name on Ruby 3.4+ (`sort (Sorter#sort)`)
 - Show eval frames as `(eval)` instead of `(eval at /abs/path:LINE)` on Ruby 3.3+
 - Show C and `<internal:...>` frames (e.g. `Integer#times`) at their caller's location instead of `at ???` or hiding them
+- Fix key bindings being disabled on Ruby 3.3 when `readline-ext` is not in the bundle (Readline falls back to Reline)
 - Fix the pager (`less`) ignoring keys and opening at 24 rows: it was attached to Jard's internal PTY instead of the terminal
 
 ## [0.3.2-beta2]
