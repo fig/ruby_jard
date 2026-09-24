@@ -99,9 +99,19 @@ module RubyJard
         less_command << '+G' if @pager_start_at_the_end
 
         IO.popen(
-          less_command.join(' '), 'w',
+          pager_env, less_command.join(' '), 'w',
           out: @tty_output, err: @tty_output
         )
+      end
+
+      # less may not be able to query the size of the stream it writes to, and
+      # then falls back to 24 rows. GNU Readline used to export LINES and
+      # COLUMNS as a side effect; Reline (the only Readline since Ruby 3.4)
+      # does not, so pass the known screen size explicitly.
+      def pager_env
+        return {} unless @window_width.positive? && @window_height.positive?
+
+        { 'LINES' => @window_height.to_s, 'COLUMNS' => @window_width.to_s }
       end
 
       def write_into_pager(str)
