@@ -50,8 +50,10 @@ module RubyJard
         # - If the real pager (less) is triggered, it works on a real tty (fetched
         # from /dev/tty), in which, the same as RubyJard::Console.output
         # - Otherwise, it writes directly into pry's REPL output.
-        # That's why there should be two output here
-        @tty_output = @console.redirected? ? @console.output : @pry_instance.output
+        # That's why there should be two output here. Pry's output may be the
+        # interceptor's PTY, and less (e.g. v704) reads keys from the terminal
+        # it writes to, so it must never be handed that PTY.
+        @tty_output = @console.output
         @window_width, @window_height = @console.screen_size
         @tracker = JardPageTracker.new(@window_height, @window_width)
         @pager = force_open ? open_pager : nil
@@ -99,19 +101,9 @@ module RubyJard
         less_command << '+G' if @pager_start_at_the_end
 
         IO.popen(
-          pager_env, less_command.join(' '), 'w',
+          less_command.join(' '), 'w',
           out: @tty_output, err: @tty_output
         )
-      end
-
-      # less may not be able to query the size of the stream it writes to, and
-      # then falls back to 24 rows. GNU Readline used to export LINES and
-      # COLUMNS as a side effect; Reline (the only Readline since Ruby 3.4)
-      # does not, so pass the known screen size explicitly.
-      def pager_env
-        return {} unless @window_width.positive? && @window_height.positive?
-
-        { 'LINES' => @window_height.to_s, 'COLUMNS' => @window_width.to_s }
       end
 
       def write_into_pager(str)
