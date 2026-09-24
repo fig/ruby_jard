@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Test different placement positions', integration: true do
+RSpec.describe 'Test different placement positions', :integration do
   let(:work_dir) { File.join(RSPEC_ROOT, '/integration/placements') }
 
   context 'when calling jard next to jard' do
