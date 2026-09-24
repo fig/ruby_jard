@@ -139,7 +139,7 @@ class JardIntegrationTest
     sleep 0.5
   end
 
-  def screen_content(allow_duplication = true)
+  def screen_content(allow_duplication: true)
     sleep 0.5
 
     previous_content = @content
