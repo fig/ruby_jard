@@ -166,7 +166,7 @@ module RubyJard
     def output_bridge
       loop do
         if @state.exiting?
-          if @output_reader.ready?
+          if @output_reader.wait_readable(0)
             write_output(@output_reader.read_nonblock(2048))
           else
             @state.exited!
