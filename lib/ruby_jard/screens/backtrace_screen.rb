@@ -109,7 +109,7 @@ module RubyJard
 
       def span_path(frame)
         path_label, = @path_decorator.decorate(
-          frame.frame_location.path, frame.frame_location.lineno
+          frame.display_location.path, frame.display_location.lineno
         )
         text_primary(path_label)
       end
