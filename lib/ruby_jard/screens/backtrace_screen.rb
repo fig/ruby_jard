@@ -93,11 +93,16 @@ module RubyJard
       end
 
       def span_method_label(frame)
+        label = frame.frame_location.label
+        base_label = frame.frame_location.base_label
+        # Block, rescue and ensure frames are labelled "block in foo". Ruby 3.4+
+        # also qualifies plain method labels ("Klass#foo"), which must not
+        # be treated as a frame kind.
         method_label =
-          if frame.frame_location.label != frame.frame_location.base_label
-            "#{frame.frame_location.base_label} (#{frame.frame_location.label.split(' ').first})"
+          if label != base_label && label.include?(' ')
+            "#{base_label} (#{label.split(' ').first})"
           else
-            frame.frame_location.base_label
+            base_label
           end
         text_method("#{method_label} ")
       end
