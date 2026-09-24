@@ -79,7 +79,9 @@ acceptable and arguably desirable. Say so in the README.
       runtime dependencies). Move the *Unreleased* changelog entries under it.
 - [ ] **GitHub**: consider asking GitHub Support to detach the fork. Standalone repositories
       rank better in search and aren't grouped under an archived parent.
-- [ ] **CI green** on the full matrix (3.2, 3.3, 3.4, 4.0, head; Ubuntu and macOS).
+- [ ] **CI green** on the supported matrix (3.2, 3.3, 3.4, 4.0; Ubuntu and macOS). Check the
+      weekly *Ruby head* workflow too: it is not a release gate, but it shows what the next
+      Ruby will break.
 
 ## Ongoing policy (proposal)
 
