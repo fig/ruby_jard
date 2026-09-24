@@ -13,8 +13,8 @@ gem 'byebug', '~> 12.0'
 gem 'jard_merge_sort', require: false
 gem 'rake', '~> 12.0'
 gem 'rspec', '~> 3.0'
-gem 'rubocop', '~> 1.81', '>= 1.81.7'
-gem 'rubocop-rspec', '~> 3.7', require: false
+gem 'rubocop', '~> 1.91.0'
+gem 'rubocop-rspec', '~> 3.10.0', require: false
 gem 'tty-markdown', '~>0.7.0'
 
 group :test do
