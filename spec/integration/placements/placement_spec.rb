@@ -115,7 +115,7 @@ RSpec.describe 'Test different placement positions', integration: true do
     it 'stops at the next file' do
       test = JardIntegrationTest.new(
         self, work_dir, 'placement_9.expected',
-        'bundle exec irb -f'
+        'bundle exec irb -f --nobanner'
       )
       test.start
       test.assert_screen
@@ -132,7 +132,7 @@ RSpec.describe 'Test different placement positions', integration: true do
     it 'stops at the next file' do
       test = JardIntegrationTest.new(
         self, work_dir, 'placement_10.expected',
-        'bundle exec irb -f'
+        'bundle exec irb -f --nobanner'
       )
       test.start
       test.assert_screen
@@ -148,7 +148,7 @@ RSpec.describe 'Test different placement positions', integration: true do
     it 'stops at the next file' do
       test = JardIntegrationTest.new(
         self, work_dir, 'placement_11.expected',
-        'bundle exec irb -f'
+        'bundle exec irb -f --nobanner'
       )
       test.start
       test.assert_screen
@@ -163,7 +163,7 @@ RSpec.describe 'Test different placement positions', integration: true do
     it 'stops at the next file' do
       test = JardIntegrationTest.new(
         self, work_dir, 'placement_12.expected',
-        'bundle exec irb -f'
+        'bundle exec irb -f --nobanner'
       )
       test.start
       test.assert_screen

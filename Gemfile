@@ -19,6 +19,9 @@ gem 'tty-markdown', '~>0.7.0'
 
 group :test do
   gem 'activerecord'
+  # The irb placement specs pass --nobanner, which irb 1.18 introduced along
+  # with its startup banner.
+  gem 'irb', '>= 1.18'
   gem 'parallel_tests'
   gem 'reline', require: false
   gem 'rspec-retry'
