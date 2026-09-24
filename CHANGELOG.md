@@ -1,4 +1,13 @@
 # Changelog
+## [Unreleased]
+Ruby 4.0 compatibility.
+- Add gems `readline` and `irb` to gemspec. Ruby 4.0 no longer ships them, and byebug requires both
+- Fix every control command (`next`, `step`, `continue`, ...) hanging on Ruby 4.0 because `IO#ready?` was removed
+- Fix backtrace method labels repeating the class name on Ruby 3.4+ (`sort (Sorter#sort)`)
+- Show eval frames as `(eval)` instead of `(eval at /abs/path:LINE)` on Ruby 3.3+
+- Show C and `<internal:...>` frames (e.g. `Integer#times`) at their caller's location instead of `at ???` or hiding them
+- Fix `less` opening at 24 rows instead of the terminal height on Ruby 3.4+
+
 ## [0.3.2-beta2]
 Ruby 3.5 compatibility release.
 - Add gem `benchmark` to gemspec
