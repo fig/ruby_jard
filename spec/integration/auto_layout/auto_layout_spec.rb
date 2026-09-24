@@ -138,7 +138,10 @@ RSpec.describe 'Auto layout', :integration do
       )
       test.start
       test.assert_screen
+      # Literal keystrokes: the #{i} must reach the debugger REPL uninterpolated.
+      # rubocop:disable Lint/InterpolationCheck
       test.send_keys('puts "Input before"; 3.times { |i| sleep 1; puts "Input #{i}" }', :Enter)
+      # rubocop:enable Lint/InterpolationCheck
       sleep 0.5
       test.resize(50, 60)
       test.resize(50, 62)
