@@ -236,7 +236,7 @@ RSpec.describe RubyJard::Decorators::PathDecorator do
     end
 
     context 'when input line is shorter if keep current one' do
-      let(:path) { File.expand_path(File.join(Dir.pwd, '../' * 30 + '../abc/def.rb')) }
+      let(:path) { File.expand_path(File.join(Dir.pwd, "#{'../' * 30}../abc/def.rb")) }
 
       it do
         expect(decorator.decorate(path)).to eql(

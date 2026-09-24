@@ -9,10 +9,10 @@ module RubyJard
   # Usage
   #   type, *info = PathClassifier.new.class('lib/abc')
   class PathClassifier
-    GEM_PATTERN = /(.*)-(\d+\.\d+[.\d]*[.\d]*[-.\w]*)/i.freeze
-    STDLIB_PATTERN = /(.*)\.rb$/.freeze
-    INTERNAL_PATTERN = /<internal:[^>]+>/.freeze
-    EVALUATION_PATTERN = /^\(eval.*\)$/.freeze
+    GEM_PATTERN = /(.*)-(\d+\.\d+[.\d]*[.\d]*[-.\w]*)/i
+    STDLIB_PATTERN = /(.*)\.rb$/
+    INTERNAL_PATTERN = /<internal:[^>]+>/
+    EVALUATION_PATTERN = /^\(eval.*\)$/
     RUBY_SCRIPT_SIGNATURE = '-e'
 
     TYPES = [
@@ -56,7 +56,7 @@ module RubyJard
         next unless path.start_with?(gem_path)
 
         splitted_path =
-          path[gem_path.length..-1]
+          path[gem_path.length..]
           .split('/')
           .reject(&:empty?)
         gem_name = splitted_path.shift
@@ -89,7 +89,7 @@ module RubyJard
         next unless path.start_with?(lib_dir)
 
         splitted_path =
-          path[lib_dir.length..-1]
+          path[lib_dir.length..]
           .split('/')
           .reject(&:empty?)
         lib_name = splitted_path.first

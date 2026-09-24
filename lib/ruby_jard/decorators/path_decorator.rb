@@ -46,8 +46,8 @@ module RubyJard
       private
 
       def decorate_source_tree(path, lineno)
-        path = path[Dir.pwd.length..-1]
-        path = path[1..-1] if path.start_with?('/')
+        path = path[Dir.pwd.length..]
+        path = path[1..] if path.start_with?('/')
         path = "#{path}#{lineno}"
         ["at #{path}", path]
       end
