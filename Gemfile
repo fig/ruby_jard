@@ -22,5 +22,8 @@ group :test do
   gem 'parallel_tests'
   gem 'reline', require: false
   gem 'rspec-retry'
+  # activesupport pulls in the securerandom gem over the default gem. The
+  # scenario_3 fixture steps through its internals, so keep them stable.
+  gem 'securerandom', '~> 0.4.0'
   gem 'sqlite3'
 end
